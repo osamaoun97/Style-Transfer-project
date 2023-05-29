@@ -12,10 +12,6 @@ from dash.dependencies import Input, Output, State
 
 from src.model import StyleTransfer
 
-st = StyleTransfer(total_variation_weight= 0,style_weight=1e-1,
-                   content_weight=1e4, steps_per_epoch = 100,
-                   learning_rate=0.05, max_dim=1200)
-
 parent = "deployment"
 
 output_path = "/assets/trymodel/output.jpg"
@@ -242,6 +238,10 @@ def update_content_image(content, filename):
 def generate_image(n_clicks, epochs):
     if n_clicks:
         print(f"n of epochs = {epochs}")
+        st = StyleTransfer(total_variation_weight= 0,style_weight=1e-1,
+                   content_weight=1e4, steps_per_epoch = 100,
+                   learning_rate=0.05, max_dim=1200)
+        
         st.style_transfer(content_path, style_path, parent + output_path, epochs)
         return output_path
     else:
