@@ -9,7 +9,12 @@ Neural Style Transfer combines the content of one image with the style of anothe
 The web interface built with Plotly Dash provides a user-friendly way to apply Neural Style Transfer without the need for any coding. It allows users to upload their own content and style images, choose number of epochs, and visualize the generated stylized image.
 
 <hr>
+
 ![](./assets/dashboard1.png)
+
 <hr>
+
 ![](./assets/dashboard2.png)
+
 <hr>
+
