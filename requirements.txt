@@ -9,5 +9,4 @@ gunicorn==20.1.0
 ipython
 tensorflow==2.12.0
 tensorrt
-tensorflow-gpu
 keras
