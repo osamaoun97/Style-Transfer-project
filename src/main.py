@@ -1,9 +1,9 @@
 import os
 from model import StyleTransfer
 
-conent_parent = "assets/content_images/"
-style_parent = "assets/style_images/"
-output_parent = "assets/output_images/"
+conent_parent = "deployment/assets/content_images/"
+style_parent = "deployment/assets/style_images/"
+output_parent = "deployment/assets/output_images/"
 
 content_images = sorted(os.listdir(conent_parent))
 style_images = sorted(os.listdir(style_parent))
