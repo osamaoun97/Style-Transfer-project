@@ -26,6 +26,7 @@ content_path = "deployment/assets/trymodel/content_image.png"
 
 app = dash.Dash(external_stylesheets=[dbc.themes.SKETCHY])
 
+server = app.server
 # Define the list of image options
 image_options = [
     {'label': 'Starry night', 'value': '1'},
@@ -246,6 +247,4 @@ def generate_image(n_clicks, epochs):
     else:
         raise PreventUpdate
     
-server = app.server
-app.run()
-
+app.run_server(debug=False)
