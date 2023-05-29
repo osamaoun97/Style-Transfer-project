@@ -145,5 +145,4 @@ class StyleTransfer:
                 print(".", end='', flush=True)
             display.clear_output(wait=True)
             print("Train step: {}".format(step))  # Print the current step
-
         tensor_to_image(image).save(output_path)  # Save the final image
