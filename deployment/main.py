@@ -10,7 +10,7 @@ from dash import dcc, html
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output, State
 
-from model import StyleTransfer
+from src.model import StyleTransfer
 
 st = StyleTransfer(total_variation_weight= 0,style_weight=1e-1,
                    content_weight=1e4, steps_per_epoch = 100,
@@ -246,7 +246,6 @@ def generate_image(n_clicks, epochs):
     else:
         raise PreventUpdate
     
-if __name__ == '__main__':
-    server = app.server
-    app.run()
+server = app.server
+app.run()
 
