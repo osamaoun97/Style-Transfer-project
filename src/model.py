@@ -44,8 +44,7 @@ def tensor_to_image(tensor):
     return PIL.Image.fromarray(tensor)  # Create a PIL image from the NumPy array
 
 # Load an image from a file path
-def load_img(path_to_img):
-    max_dim = 200
+def load_img(path_to_img, max_dim):
     img = tf.io.read_file(path_to_img)  # Read the image file
     img = tf.image.decode_jpeg(img, channels=3)  # Decode the JPEG image
     img = tf.image.convert_image_dtype(img, tf.float32)  # Convert the image to float32 format
@@ -85,17 +84,20 @@ def clip_0_1(image):
 
 # Class for performing style transfer
 class StyleTransfer:
-    def __init__(self, total_variation_weight=0, style_weight=1e-2, content_weight=1e4, epochs=10, steps_per_epoch=100, learning_rate=0.02):
+    def __init__(self, total_variation_weight=0, style_weight=1e-2,
+                 content_weight=1e4, steps_per_epoch=100,
+                 learning_rate=0.02, max_dim = 1200):
         self.total_variation_weight = total_variation_weight
         self.style_weight = style_weight
         self.content_weight = content_weight
-        self.epochs = epochs
         self.steps_per_epoch = steps_per_epoch
         self.learning_rate = learning_rate
+        self.max_dim = max_dim
 
-    def style_transfer(self, content_path, style_path, output_path):
-        content_image = load_img(content_path)  # Load the content image
-        style_image = load_img(style_path)  # Load the style image
+    def style_transfer(self, content_path, style_path, output_path, epochs = 20):
+        self.epochs = epochs
+        content_image = load_img(content_path, self.max_dim)  # Load the content image
+        style_image = load_img(style_path, self.max_dim)  # Load the style image
 
         content_layers = ['block5_conv2']  # Specify the content layers for the StyleContentModel
 
@@ -143,5 +145,4 @@ class StyleTransfer:
                 print(".", end='', flush=True)
             display.clear_output(wait=True)
             print("Train step: {}".format(step))  # Print the current step
-
         tensor_to_image(image).save(output_path)  # Save the final image
