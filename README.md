@@ -1,6 +1,6 @@
 # Neural Style Transfer Project
 
-This repository provides a TensorFlow-based implementation of Neural Style Transfer, along with a web interface built using Plotly Dash.
+This repository provides a TensorFlow-based implementation of Neural Style Transfer, along with a web interface built using Plotly-Dash.
 
 Neural Style Transfer is a technique that allows you to apply the artistic style of one image to the content of another image, creating visually appealing and artistic results.
 
